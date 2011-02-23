@@ -13,6 +13,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class does most of the work of wrapping the {@link PopupWindow} so it's simpler to use. 
  * Edited by Lorensius. W. L. T
@@ -21,17 +22,26 @@ import android.widget.PopupWindow;
  * 
  */
 public class CustomPopupWindow {
+	
+	/** The anchor. */
 	protected final View anchor;
+	
+	/** The window. */
 	protected final PopupWindow window;
+	
+	/** The root. */
 	private View root;
+	
+	/** The background. */
 	private Drawable background = null;
+	
+	/** The window manager. */
 	protected final WindowManager windowManager;
 	
 	/**
-	 * Create a QuickAction
-	 * 
-	 * @param anchor
-	 *            the view that the QuickAction will be displaying 'from'
+	 * Create a QuickAction.
+	 *
+	 * @param anchor the view that the QuickAction will be displaying 'from'
 	 */
 	public CustomPopupWindow(View anchor) {
 		this.anchor = anchor;
@@ -43,8 +53,7 @@ public class CustomPopupWindow {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-					CustomPopupWindow.this.window.dismiss();
-					
+					close();
 					return true;
 				}
 				
@@ -58,6 +67,14 @@ public class CustomPopupWindow {
 	}
 
 	/**
+	 * Close.
+	 */
+	public void close()
+	{
+		CustomPopupWindow.this.window.dismiss();
+	}
+	
+	/**
 	 * Anything you want to have happen when created. Probably should create a view and setup the event listeners on
 	 * child views.
 	 */
@@ -68,6 +85,9 @@ public class CustomPopupWindow {
 	 */
 	protected void onShow() {}
 
+	/**
+	 * Pre show.
+	 */
 	protected void preShow() {
 		if (root == null) {
 			throw new IllegalStateException("setContentView was not called with a view to display.");
@@ -94,6 +114,11 @@ public class CustomPopupWindow {
 		window.setContentView(root);
 	}
 
+	/**
+	 * Sets the background drawable.
+	 *
+	 * @param background the new background drawable
+	 */
 	public void setBackgroundDrawable(Drawable background) {
 		this.background = background;
 	}
@@ -111,9 +136,9 @@ public class CustomPopupWindow {
 	}
 
 	/**
-	 * Will inflate and set the view from a resource id
-	 * 
-	 * @param layoutResID
+	 * Will inflate and set the view from a resource id.
+	 *
+	 * @param layoutResID the new content view
 	 */
 	public void setContentView(int layoutResID) {
 		LayoutInflater inflator =
@@ -123,16 +148,16 @@ public class CustomPopupWindow {
 	}
 
 	/**
-	 * If you want to do anything when {@link dismiss} is called
-	 * 
-	 * @param listener
+	 * If you want to do anything when {@link dismiss} is called.
+	 *
+	 * @param listener the new on dismiss listener
 	 */
 	public void setOnDismissListener(PopupWindow.OnDismissListener listener) {
 		window.setOnDismissListener(listener);
 	}
 
 	/**
-	 * Displays like a popdown menu from the anchor view
+	 * Displays like a popdown menu from the anchor view.
 	 */
 	public void showDropDown() {
 		showDropDown(0, 0);
@@ -203,6 +228,9 @@ public class CustomPopupWindow {
 		window.showAtLocation(anchor, Gravity.NO_GRAVITY, xPos, yPos);
 	}
 	
+	/**
+	 * Dismiss.
+	 */
 	public void dismiss() {
 		window.dismiss();
 	}
