@@ -34,12 +34,35 @@ public class PopupBalloon extends CustomPopupWindow {
 	private int animStyle;
 	
 	/**
+	 * Constructor
+	 *
+	 * @param anchor {@link View} on where the popup should be displayed
+	 */
+	public PopupBalloon(View anchor)
+	{
+		this(anchor, false);
+	}
+	
+	/**
 	 * Constructor.
 	 *
 	 * @param anchor  {@link View} on where the popup should be displayed
 	 * @param touchToDismiss If true, touching anywhere on the screen will dismiss the popup.
 	 */
 	public PopupBalloon(View anchor, boolean touchToDismiss) {
+		this(anchor, touchToDismiss, -1, -1, -1);
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param anchor  {@link View} on where the popup should be displayed
+	 * @param touchToDismiss If true, touching anywhere on the screen will dismiss the popup.
+	 * @param upArrowImageResId the up arrow image res id
+	 * @param downArrowImageResId the down arrow image res id
+	 * @param contentBackgroundResId the content background res id
+	 */
+	public PopupBalloon(View anchor, boolean touchToDismiss, int upArrowImageResId, int downArrowImageResId, int contentBackgroundResId) {
 		super(anchor);
 		context		= anchor.getContext();
 		inflater 	= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,9 +90,31 @@ public class PopupBalloon extends CustomPopupWindow {
 				}
 			});
 		}
+		
+		setDrawableResources(upArrowImageResId, downArrowImageResId, contentBackgroundResId);
+	}
+	
+	/**
+	 * Allows the project using this library to customize the popup 
+	 * appearance to match any branding or styles in that app.
+	 * Use this if the default appearance seems out of place for your app.
+	 *
+	 * @param upArrowImageResId the up arrow image res id
+	 * @param downArrowImageResId the down arrow image res id
+	 * @param contentBackgroundResId the content background res id
+	 */
+	public void setDrawableResources(int upArrowImageResId,
+			int downArrowImageResId, int contentBackgroundResId) {
+		if(upArrowImageResId < 0 || downArrowImageResId < 0 || contentBackgroundResId < 0)
+		{
+			return;
+		}
+		
+		mArrowUp.setImageResource(upArrowImageResId);
+		mArrowDown.setImageResource(downArrowImageResId);
+		mContentLayout.setBackgroundResource(contentBackgroundResId);
 	}
 
-	
 	/**
 	 * Set animation style
 	 * 
