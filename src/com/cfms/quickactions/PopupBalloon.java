@@ -30,7 +30,6 @@ public class PopupBalloon extends CustomPopupWindow {
 	public static final int ANIM_AUTO = 4;
 	
 	private static final int OVERLAP = 8;
-	private static final String TAG = "PopupBalloon";
 	
 	private int animStyle;
 	
