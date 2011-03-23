@@ -1,7 +1,5 @@
 package com.cfms.quickactions;
 
-import com.cfms.podfusion.DebugLog;
-
 import android.content.Context;
 import android.graphics.Rect;
 import android.view.Gravity;
@@ -141,7 +139,6 @@ public class PopupBalloon extends CustomPopupWindow {
 			yPos 	= anchorRect.bottom - OVERLAP;
 			onTop	= false;
 		}
-		DebugLog.i(TAG, "XPos: "+xPos);
 		showArrow(((onTop) ? R.id.arrow_down : R.id.arrow_up), anchorRect.centerX()-xPos);
 		
 		setAnimationStyle(screenWidth, anchorRect.centerX(), onTop);
