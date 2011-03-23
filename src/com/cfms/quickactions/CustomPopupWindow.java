@@ -60,7 +60,6 @@ public class CustomPopupWindow {
 				return false;
 			}
 		});
-
 		windowManager = (WindowManager) anchor.getContext().getSystemService(Context.WINDOW_SERVICE);
 		
 		onCreate();

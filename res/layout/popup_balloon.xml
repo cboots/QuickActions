@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        
+     <FrameLayout
+  		android:layout_marginTop="10dip"
+        android:id="@+id/content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup">
+        
+        
+    </FrameLayout>
+        
+  	<ImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"	 
+        android:src="@drawable/quickcontact_arrow_up" />
+       
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    	android:layout_marginTop="0dp"
+        android:layout_below="@id/content_layout"
+        android:src="@drawable/quickcontact_arrow_down" />
+
+</RelativeLayout>
